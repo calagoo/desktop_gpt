@@ -15,9 +15,9 @@
 
 ### TODO List:
 Add a notification for the API connection status.  
-Fix issues with the scroll bar in the chat history.  
-Improve UI aesthetics by making elements rounder.  
-Update the settings screen to remove unnecessary elements (e.g., the summary for API key input).  
+Fix issues with the scroll bar in the chat history and user input.  
+Improve UI aesthetics.  
+Update the settings screen.
 
 ### Future Enhancements:
 Additional settings and preferences for users to adjust the API behavior and UI styles.  
