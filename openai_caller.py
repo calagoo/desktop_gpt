@@ -1,11 +1,12 @@
+"""A module to interact with the OpenAI API"""
 import os
 from openai import OpenAI
-import re
 
 apikey = os.getenv("desktop_gpt_api_key")
 
 
 class OpenAIReply:
+    """A class to interact with the OpenAI API"""
     def __init__(self):
         self.summary = ""
         self.context = ""
@@ -14,6 +15,7 @@ class OpenAIReply:
         self.client.api_key = apikey
 
     def generate_openai_reply(self, prompt):
+        """Generate a reply from the OpenAI API"""
         completion = self.client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
@@ -30,11 +32,13 @@ class OpenAIReply:
         return resp
 
     def generate_openai_summary(self):
+        """Generate a summary from the OpenAI API"""
         completion = self.client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a summarizer."
-                 "Summarize any text you are given into a short concise response. Summarize all the messages into a single response."},
+                 "Summarize any text you are given into a short concise response."
+                  " Summarize all the messages into a single response."},
                 {"role": "user", "content": self.context},
             ]
         )
@@ -45,8 +49,8 @@ class OpenAIReply:
 
 if __name__ == "__main__":
     openai_reply = OpenAIReply()
-    prompt = "give random python code, no explanation (shortish, with some comments)"
-    x = openai_reply.generate_openai_reply(prompt)
+    test_prompt = "give random python code, no explanation (shortish, with some comments)"
+    x = openai_reply.generate_openai_reply(test_prompt)
     # openai_reply.generate_openai_summary()
 
     print(openai_reply.process_code_snippet(x))
